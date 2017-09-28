@@ -1,7 +1,7 @@
 import urllib.request as rq
 from bs4 import BeautifulSoup
 
-url = input('Enter url : ')
+url = input('Enter url (start https or http) : ')
 
 
 html = rq.urlopen(url).read()
