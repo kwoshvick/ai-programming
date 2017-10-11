@@ -14,8 +14,15 @@ for lines in fileHandler:
 
 m = sorted(wordsDictionary.items(),key=lambda x:x[1],reverse=True)
 
-plt.bar(range(len(wordsDictionary)), wordsDictionary.values(), align='center')
-plt.xticks(range(len(wordsDictionary)), wordsDictionary.keys(),rotation=-60)
+frequentWords = {k:v for (k,v) in wordsDictionary.items() if v > 80}
+#
+print(list(frequentWords.values()))
+n, bins, patches = plt.hist(list(frequentWords.values()))
+# plt.bar(range(len(frequentWords)), frequentWords.values(), align='center')
+# plt.xticks(range(len(frequentWords)), frequentWords.keys(),rotation=-60)
+plt.title('Histogram of Frequency of words')
+plt.xlabel('Words')
+plt.ylabel('Frequency')
 
 plt.show()
 
