@@ -39,11 +39,12 @@ def get_p_tags(urls):
 
 
 def plot_graph(wordsDictionary):
-    average = sum(wordsDictionary.values())/len(wordsDictionary.values())
-    frequentWords = {k: v for (k, v) in wordsDictionary.items() if v > average-1}
-    plt.bar(range(len(frequentWords)), frequentWords.values())
-    plt.xticks(range(len(frequentWords)), frequentWords.keys(), rotation=-60)
-    plt.title('Histogram of Frequency of words')
+    sorted_dictionary = OrderedDict(sorted(wordsDictionary.items(), key=lambda v: v[1], reverse=True))
+    most_frequent = {k: sorted_dictionary[k] for k in list(sorted_dictionary.keys())[:10]}
+    # sorted_most_frequent = OrderedDict(sorted(most_frequent.items(), key=lambda v: v[1], reverse=True))
+    plt.bar(range(len(most_frequent)), most_frequent.values())
+    plt.xticks(range(len(most_frequent)), most_frequent.keys(), rotation=-60)
+    plt.title('Frequency of words')
     plt.xlabel('Words')
     plt.ylabel('Frequency')
     plt.show()
