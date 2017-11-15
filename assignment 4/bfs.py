@@ -22,10 +22,8 @@ def get_p_tags(link):
     tags = soup.findAll('p')
     for tag in tags:
         p = tag.text
-        # print(type(p))
         m = p.strip('. : / = ')
         m = m.lower()
-        # print(m.split())
         append_words(m.split())
 
 def append_words(words):
@@ -34,7 +32,8 @@ def append_words(words):
 
 
 def plot_graph(wordsDictionary):
-    frequentWords = {k: v for (k, v) in wordsDictionary.items() if v > 0}
+    average = sum(wordsDictionary.values())/len(wordsDictionary.values())
+    frequentWords = {k: v for (k, v) in wordsDictionary.items() if v > average}
     plt.bar(range(len(frequentWords)), frequentWords.values())
     plt.xticks(range(len(frequentWords)), frequentWords.keys(), rotation=-60)
     plt.title('Histogram of Frequency of words')
@@ -45,9 +44,6 @@ def plot_graph(wordsDictionary):
 
 
 
-get_p_tags('http://www.strathmore.edu/')
+# get_p_tags('http://www.strathmore.edu/')
+get_p_tags('http://www.strathmore.edu/news/student-spotlight-akilimali-yasin-strathmore-has-exposed-me-to-many-prospects/')
 plot_graph(wordsDictionary)
-
-# print(wordsDictionary)
-#
-# print(urllist)
