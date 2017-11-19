@@ -2,6 +2,7 @@ import urllib.request as rq
 import matplotlib.pyplot as plt
 import re
 from collections import OrderedDict
+import time
 
 
 
@@ -50,7 +51,10 @@ def plot_graph(wordsDictionary):
     plt.show()
 
 
-
+start_time = time.clock()
 getLinks('http://www.strathmore.edu/')
 get_p_tags(urllist)
+print (time.clock() - start_time, "seconds")
 plot_graph(wordsDictionary)
+print (time.clock() - start_time, "seconds")
+
