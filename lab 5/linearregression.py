@@ -66,6 +66,7 @@ def plot(x,c,areaList,priceList):
     plt.show()
 
 
+
 if __name__ =='__main__':
     areaList, priceList = readCSV('train.csv')
     x,c = linearRegression(areaList,priceList)
